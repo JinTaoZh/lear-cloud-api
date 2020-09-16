@@ -1,0 +1,26 @@
+server:
+  port: 3355
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    config: # config 客户端配置
+      label: master #分支名称
+      name: config # 配置文件名称
+      profile: dev # 读取名称后缀 结合上面的我们需要读取的是 master分支上的config-dev.yml的配置文件
+      uri: http://localhost:3344 # 配置中心地址 读取http://localhost:3344/master/config-dev.yml
+
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
