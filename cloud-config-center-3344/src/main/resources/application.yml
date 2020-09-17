@@ -14,6 +14,12 @@ spring:
             - zjt-cloud
       ####读取分支
       label: master
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: admin
+    password: 123456
+
 
 #服务注册到eureka地址
 eureka:
@@ -21,4 +27,10 @@ eureka:
     service-url:
       defaultZone: http://localhost:7001/eureka
 
+##rabbitmq相关配置,暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh' #暴露bus刷新配置的端点
 
