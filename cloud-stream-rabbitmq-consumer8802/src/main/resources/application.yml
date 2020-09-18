@@ -1,0 +1,48 @@
+server:
+  port: 8802
+
+spring:
+  application:
+    name: cloud-stream-consumer
+  cloud:
+    stream:
+      bindings: # 服务的整合处理
+        input: # 这个名字是一个通道的名称
+          destination: studyExchange # 表示要使用的Exchange名称定义
+          binder: rabbit1 # 设置要绑定的消息服务的具体设置
+          content-type: application/json # 设置消息类型，本次为json，文本则设置“text/plain”
+          #group: rabbitA # 设置分组
+      binders: # 在此处配置要绑定的rabbitmq的服务信息；
+        rabbit1: # 表示定义的名称，用于于binding整合
+          type: rabbit # 消息组件类型
+          environment: # 设置rabbitmq的相关的环境配置
+            spring:
+              rabbitmq:
+                host: 192.168.0.169
+                port: 5672
+                username: admin
+                password: qwerty
+  #如果连接到远程RabbitMQ报Rabbit health check failed异常 并抛出校验错误信息
+  #配置以下信息
+  #因为默认会尝试连接localhost:5672 用户名guest 密码guest
+  #配置信息在 RabbitProperties
+  rabbitmq:
+    host: 192.168.0.169
+    port: 5672
+    username: admin
+    password: qwerty
+
+eureka:
+  client: # 客户端进行Eureka注册的配置
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
+    lease-expiration-duration-in-seconds: 5 #  表示eureka server至上一次收到client的心跳之后，等待下一次心跳的超时时间 如果现在超过了5秒的间隔 则将移除该instance（默认是90秒）
+    instance-id: receive-8802.com  # 在信息列表时显示主机名称
+    prefer-ip-address: true     # 访问的路径变为IP地址
+
+#management:
+#  health:
+#    rabbit:
+#      enabled: false

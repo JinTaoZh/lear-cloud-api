@@ -18,7 +18,7 @@ spring:
     host: localhost
     port: 5672
     username: admin
-    password: 123456
+    password: qwerty
 
 
 #服务注册到eureka地址
