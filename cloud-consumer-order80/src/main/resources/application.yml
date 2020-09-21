@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: cloud-order-server # 微服务名称
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1
 
 # eureka 相关配置文件
 eureka:
