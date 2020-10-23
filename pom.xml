@@ -35,6 +35,9 @@
         <module>cloudalibaba-provider-payment9002</module>
         <module>cloudalibaba-consumer-order83</module>
         <module>cloudalibaba-config-nacos-client3377</module>
+        <module>cloudalibaba-sentinel-service8401</module>
+        <module>cloudalibaba-provider-payment9004</module>
+        <module>cloudalibaba-consumer-nacos-order84</module>
     </modules>
 
     <!-- 统一管理jar包版本 -->
@@ -50,7 +53,7 @@
         <druid.spring.boot.starter.version>1.1.23</druid.spring.boot.starter.version>
         <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
         <spring.cloud.version>Hoxton.SR1</spring.cloud.version>
-        <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
+        <spring.cloud.alibaba.version>2.2.1.RELEASE</spring.cloud.alibaba.version>
         <mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
         <mybatis-spring-boot-starter.version>2.1.1</mybatis-spring-boot-starter.version>
         <hutool-all.version>5.2.0</hutool-all.version>
