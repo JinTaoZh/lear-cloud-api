@@ -1,0 +1,59 @@
+server:
+  port: 2001
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/seata_order?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: myuser
+  application:
+    name: seata-order-service
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+        group: SEATA_GROUP
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+feign:
+  hystrix:
+    enabled: false
+
+logging:
+  level:
+    io:
+      seata: info
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: my_test_tx_group
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+    grouplist:
+      default: 127.0.0.1:8091
+    enable-degrade: false
+    disable-global-transaction: false
+  config:
+    type: nacos
+    nacos:
+      group: "SEATA_GROUP"
+      server-addr: localhost:8848
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      group: "SEATA_GROUP"
+      server-addr: localhost:8848
+      username: "nacos"
+      password: "nacos"
+      application: seata-server
+  enable-auto-data-source-proxy: true
