@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "seata.tx-service-group.grouplist.default",
+      "type": "java.lang.String",
+      "description": "Description for seata.tx-service-group.grouplist.default."
+  }
+] }
